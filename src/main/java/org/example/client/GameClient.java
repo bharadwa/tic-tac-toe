@@ -26,7 +26,7 @@ public class GameClient {
 
         System.out.println("please enter the size of the board:");
         int dimension =input.nextInt();
-        System.out.println("please enter the winning strategies of the board like ROW,COLUMN,DIAGONAL:");
+        System.out.println("please enter the winning strategies of the board like ROW,COLUMN,DIAGONAL,CORNER:");
         String winningStrategy = input.next();
         String strategies[] =winningStrategy.split(",");
         List<GameWinningStrategy> winningStrategies = new ArrayList<>();

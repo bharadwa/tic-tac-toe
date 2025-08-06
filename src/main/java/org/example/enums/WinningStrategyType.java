@@ -6,7 +6,8 @@ public enum WinningStrategyType {
 
     ROW,
     COLUMN,
-    DIAGONAL;
+    DIAGONAL,
+    CORNER;
 
 
     public static WinningStrategyType convert(String strategyType) {

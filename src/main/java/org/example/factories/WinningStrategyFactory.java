@@ -1,10 +1,7 @@
 package org.example.factories;
 
 import org.example.enums.WinningStrategyType;
-import org.example.strategies.ColumnWinningStrategy;
-import org.example.strategies.DiagonalWinningStrategy;
-import org.example.strategies.GameWinningStrategy;
-import org.example.strategies.RowWinningStrategy;
+import org.example.strategies.*;
 
 public class WinningStrategyFactory {
 
@@ -21,6 +18,8 @@ public class WinningStrategyFactory {
                 return new RowWinningStrategy();
             case COLUMN:
                 return new ColumnWinningStrategy();
+            case CORNER :
+                return new CornerWinningStrategy();
             default:
                 throw new IllegalArgumentException("Invalid strategy type");
         }
