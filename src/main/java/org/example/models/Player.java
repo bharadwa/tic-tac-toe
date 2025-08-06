@@ -37,9 +37,9 @@ public class Player {
     }
 
     public Cell makeMove() {
-        System.out.println("Please provide the row for the move ");
+        System.out.println("Please provide the row for player: "+this.name+ " Symbol:"+this.getCharacter());
         int row = sc.nextInt();
-        System.out.println("Please provide the column for the move ");
+        System.out.println("Please provide the column for player: "+this.name+ " Symbol:"+this.getCharacter());
         int column = sc.nextInt();
         return new Cell(row, column);
     }

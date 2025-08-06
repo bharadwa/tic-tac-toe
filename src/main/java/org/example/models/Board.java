@@ -1,5 +1,7 @@
 package org.example.models;
 
+import org.example.enums.CellState;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,6 @@ public class Board {
     }
 
     private List<List<Cell>> initCells(int dimension) {
-
         List<List<Cell>> cells = new ArrayList<>();
         for (int i = 0; i < dimension; i++) {
             List<Cell> row = new ArrayList<>();
@@ -44,5 +45,12 @@ public class Board {
     public void updateBoard(Cell cell) {
       getCell(cell.getRow(),cell.getColumn()).setCellState(cell.getCellState());
       getCell(cell.getRow(),cell.getColumn()).setPlayer(cell.getPlayer());
+    }
+
+    public void undoMove(Move lastMove) {
+        Cell cell=lastMove.getCell();
+        cell.setCellState(CellState.EMPTY);
+        cell.setPlayer(null);
+        this.updateBoard(cell);
     }
 }

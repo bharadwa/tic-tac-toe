@@ -48,4 +48,12 @@ public class Cell {
     public CellState getCellState() {
         return cellState;
     }
+
+    public String getSymbol() {
+        if(CellState.FILLED == this.cellState&&this.player!=null) {
+            return this.player.getCharacter();
+        }else {
+            return null;
+        }
+    }
 }

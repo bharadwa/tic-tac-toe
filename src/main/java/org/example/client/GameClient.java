@@ -9,6 +9,7 @@ import org.example.models.Game;
 import org.example.models.Player;
 import org.example.models.Symbol;
 import org.example.strategies.GameWinningStrategy;
+import org.example.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +22,11 @@ public class GameClient {
     public static void main(String[] args) {
 
         GameController controller = new GameController();
-        System.out.println("start the game");
+        System.out.println("start the game:");
 
-        System.out.println("please enter the size of the board");
+        System.out.println("please enter the size of the board:");
         int dimension =input.nextInt();
-        System.out.println("please enter the winning strategies of the board");
+        System.out.println("please enter the winning strategies of the board:");
         String winningStrategy = input.next();
         String strategies[] =winningStrategy.split(",");
         List<GameWinningStrategy> winningStrategies = new ArrayList<>();
@@ -35,10 +36,10 @@ public class GameClient {
 
         int playersCount=dimension-1;
         List<Player> players= new ArrayList<>();
-        for(int index=0;index<playersCount;index++){
-            System.out.println("Please enter the name of the player "+(index+1)+":");
+        for(int index=0;index < playersCount; index++){
+            System.out.println("Please enter the name of the player :"+(index+1)+":");
             String name=input.next();
-            System.out.println("please enter the symbol "+(index+1)+":");
+            System.out.println("Please enter the symbol :"+(index+1)+":");
             String symbol=input.next();
             players.add(new Player(name,new Symbol(symbol), PlayerType.HUMAN));
         }
@@ -49,12 +50,20 @@ public class GameClient {
             controller.makeMove(game);
             controller.displayBoard(game);
             // next we check for undo
+            System.out.println("Do you want to undo a move please select y/n");
+            String undo=input.next();
+            if(StringUtils.isNotEmpty(undo)&&undo.equals("y")){
+              controller.undoMove(game);
+              controller.displayBoard(game);
+            }
         }
 
         if(game.getGameState()==GameState.PLAYER_WON) {
             System.out.println("current winner of the game :"+game.getWinner().getName());
-        }else  if(game.getGameState()==GameState.DRAW){
-            System.out.println("Game is ended in a draw state");
+        }else if (game.getGameState()==GameState.BOT_WON) {
+            System.out.println("current winner of the game is Bot :"+game.getWinner().getName());
+        } else if(game.getGameState()==GameState.DRAW){
+            System.out.println("Game is ended in a draw state :");
         }
 
     }

@@ -6,7 +6,7 @@ public class StringUtils {
         return value==null || value.length()==0;
     }
 
-    public static boolean inNotEmpty(String value){
+    public static boolean isNotEmpty(String value){
         return !isEmpty(value);
     }
 }

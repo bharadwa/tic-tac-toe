@@ -7,4 +7,6 @@ public interface GameWinningStrategy {
 
 
     boolean checkWinner(Move move, Board board);
+
+    void undoMove(Move lastMove);
 }

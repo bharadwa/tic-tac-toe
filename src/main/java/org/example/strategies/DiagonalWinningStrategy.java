@@ -9,4 +9,9 @@ public class DiagonalWinningStrategy implements GameWinningStrategy{
     public boolean checkWinner(Move move, Board board) {
         return false;
     }
+
+    @Override
+    public void undoMove(Move lastMove) {
+
+    }
 }

@@ -9,8 +9,8 @@ import java.util.List;
 
 public class GameController {
 
-    public Game StartGame(int dimension , List<Player> players, List<GameWinningStrategy> winningStrategies) {
-        Game game = new Game(players,dimension, winningStrategies);
+    public Game StartGame(int dimension, List<Player> players, List<GameWinningStrategy> winningStrategies) {
+        Game game = new Game(players, dimension, winningStrategies);
         return game;
     }
 
@@ -26,5 +26,9 @@ public class GameController {
     public void makeMove(Game game) {
         game.makeMove();
         //
+    }
+
+    public void undoMove(Game game) {
+        game.undoMove();
     }
 }
