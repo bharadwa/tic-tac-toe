@@ -130,7 +130,7 @@ public class Game {
         this.board.undoMove(lastMove);
         //undo the winning strategies map
         for (GameWinningStrategy strategy : winningStrategies) {
-            strategy.undoMove(lastMove);
+            strategy.undoMove(lastMove,this.board.getDimension());
         }
         currentPlayerIndex = (currentPlayerIndex - 1) % players.size();
         //update the game State

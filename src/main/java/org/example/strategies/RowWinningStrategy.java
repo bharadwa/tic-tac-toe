@@ -29,7 +29,7 @@ public class RowWinningStrategy implements GameWinningStrategy {
     }
 
     @Override
-    public void undoMove(Move lastMove) {
+    public void undoMove(Move lastMove,int size) {
         int row=getRow(lastMove.getCell());
         String symbol=getSymbol(lastMove.getPlayer());
         rowMap.get(row).put(symbol,rowMap.get(row).get(symbol)-1);
