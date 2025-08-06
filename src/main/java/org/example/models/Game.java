@@ -164,7 +164,7 @@ public class Game {
             throw new IllegalStateException("Game state is not IN_PROGRESS");
         }
         Player currentPlayer = players.get(currentPlayerIndex);
-        Cell cell = currentPlayer.makeMove();
+        Cell cell = currentPlayer.makeMove(this.board);
         if (!validateMove(cell)) {
             System.out.println("this is a invalid move please entire a valid move ");
             return;

@@ -1,13 +1,11 @@
 package org.example.client;
 
 import org.example.controllers.GameController;
+import org.example.enums.DifficultyLevel;
 import org.example.enums.GameState;
 import org.example.enums.PlayerType;
 import org.example.factories.WinningStrategyFactory;
-import org.example.models.Board;
-import org.example.models.Game;
-import org.example.models.Player;
-import org.example.models.Symbol;
+import org.example.models.*;
 import org.example.strategies.GameWinningStrategy;
 import org.example.utils.StringUtils;
 
@@ -37,11 +35,21 @@ public class GameClient {
         int playersCount=dimension-1;
         List<Player> players= new ArrayList<>();
         for(int index=0;index < playersCount; index++){
-            System.out.println("Please enter the name of the player :"+(index+1)+":");
-            String name=input.next();
-            System.out.println("Please enter the symbol :"+(index+1)+":");
-            String symbol=input.next();
-            players.add(new Player(name,new Symbol(symbol), PlayerType.HUMAN));
+            System.out.println("Please select BOT/HUMAN");
+            String playerType =input.next();
+            PlayerType player=PlayerType.build(playerType);
+            if(player==PlayerType.BOT){
+              System.out.println("Player name is BOT"+index+" and default Symbol is :B"+index);
+              System.out.println("Please choose Valid BOT difficulty Level like EASY OR MEDIUM OR HARD/n");
+              String difficultLevel=input.next();
+              players.add(new BOT("computer_" + index,new Symbol("B_"+index), DifficultyLevel.build(difficultLevel)));
+            }else {
+                System.out.println("Please enter the name of the player :" + (index + 1) + ":");
+                String name = input.next();
+                System.out.println("Please enter the symbol :" + (index + 1) + ":");
+                String symbol = input.next();
+                players.add(new Player(name, new Symbol(symbol), PlayerType.HUMAN));
+            }
         }
 
         Game game=controller.StartGame(dimension,players,winningStrategies);

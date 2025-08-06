@@ -36,7 +36,7 @@ public class Player {
         return getSymbol().getSymbol();
     }
 
-    public Cell makeMove() {
+    public Cell makeMove(Board board) {
         System.out.println("Please provide the row for player: "+this.name+ " Symbol:"+this.getCharacter());
         int row = sc.nextInt();
         System.out.println("Please provide the column for player: "+this.name+ " Symbol:"+this.getCharacter());
