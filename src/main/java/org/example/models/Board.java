@@ -33,7 +33,16 @@ public class Board {
         return cells;
     }
 
+    public Cell getCell(int row,int columns) {
+        return cells.get(row).get(columns);
+    }
+
     public int getDimension() {
         return dimension;
+    }
+
+    public void updateBoard(Cell cell) {
+      getCell(cell.getRow(),cell.getColumn()).setCellState(cell.getCellState());
+      getCell(cell.getRow(),cell.getColumn()).setPlayer(cell.getPlayer());
     }
 }

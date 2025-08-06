@@ -1,13 +1,13 @@
 package org.example.models;
 
+import org.example.constants.GameConstants;
 import org.example.enums.CellState;
 
 public class Cell {
+
     private final int row;
     private final int column;
     private CellState cellState;
-    private static final String EMPTY_CHARACTER="-";
-
     private Player player;
 
     public Cell(int row, int column) {
@@ -33,8 +33,19 @@ public class Cell {
         return player;
     }
 
-    public void display()  {
-        System.out.print("| "+ (this.cellState == CellState.FILLED?this.player.getCharacter():EMPTY_CHARACTER) + " |");
+    public void display() {
+        System.out.print("| " + (this.cellState == CellState.FILLED ? this.player.getCharacter() : GameConstants.EMPTY_CHARACTER) + " |");
     }
 
+    public boolean isValid() {
+        return this.cellState != CellState.FILLED;
+    }
+
+    public void setCellState(CellState cellState) {
+        this.cellState = cellState;
+    }
+
+    public CellState getCellState() {
+        return cellState;
+    }
 }

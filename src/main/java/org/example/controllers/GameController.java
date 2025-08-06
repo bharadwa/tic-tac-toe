@@ -23,4 +23,8 @@ public class GameController {
     }
 
 
+    public void makeMove(Game game) {
+        game.makeMove();
+        //
+    }
 }

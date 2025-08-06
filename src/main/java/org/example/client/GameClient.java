@@ -1,8 +1,10 @@
 package org.example.client;
 
 import org.example.controllers.GameController;
+import org.example.enums.GameState;
 import org.example.enums.PlayerType;
 import org.example.factories.WinningStrategyFactory;
+import org.example.models.Board;
 import org.example.models.Game;
 import org.example.models.Player;
 import org.example.models.Symbol;
@@ -43,5 +45,17 @@ public class GameClient {
 
         Game game=controller.StartGame(dimension,players,winningStrategies);
         controller.displayBoard(game);
+        while(controller.getGameState(game)== GameState.IN_PROGRESS){
+            controller.makeMove(game);
+            controller.displayBoard(game);
+            // next we check for undo
+        }
+
+        if(game.getGameState()==GameState.PLAYER_WON) {
+            System.out.println("current winner of the game :"+game.getWinner().getName());
+        }else  if(game.getGameState()==GameState.DRAW){
+            System.out.println("Game is ended in a draw state");
+        }
+
     }
 }
