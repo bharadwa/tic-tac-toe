@@ -19,9 +19,9 @@ public class Game {
 
     private List<GameWinningStrategy> winningStrategies;
 
-    public Game(List<Player> players, Board board, List<GameWinningStrategy> winningStrategies) {
+    public Game(List<Player> players, int dimension, List<GameWinningStrategy> winningStrategies) {
         this.players = players;
-        this.board = board;
+        this.board = new Board(dimension);
         this.winningStrategies = winningStrategies;
         this.currentPlayerIndex = 0;
         this.gameState = GameState.NOT_STARTED;
@@ -33,5 +33,32 @@ public class Game {
 
     public void setPlayers(List<Player> players) {
         this.players = players;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public int getCurrentPlayerIndex() {
+        return currentPlayerIndex;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public List<GameWinningStrategy> getWinningStrategies() {
+        return winningStrategies;
+    }
+
+    public void displayBoard() {
+        for (List<Cell> row : board.getCells()) {
+            row.stream().forEach(cell->cell.display());
+            System.out.println();
+        }
     }
 }
