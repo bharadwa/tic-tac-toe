@@ -11,6 +11,9 @@ public class WinningStrategyFactory {
     public static GameWinningStrategy getWinningStrategy(String strategy) {
 
         WinningStrategyType type = WinningStrategyType.convert(strategy);
+        if(type==null) {
+            throw new IllegalArgumentException("Invalid strategy provided: "+strategy +" Please provide valid ROW|COLUMN|DIAGONAL");
+        }
         switch (type) {
             case DIAGONAL:
                 return new DiagonalWinningStrategy();

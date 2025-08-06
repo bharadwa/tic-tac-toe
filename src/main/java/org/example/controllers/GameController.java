@@ -10,7 +10,12 @@ import java.util.List;
 public class GameController {
 
     public Game StartGame(int dimension, List<Player> players, List<GameWinningStrategy> winningStrategies) {
-        Game game = new Game(players, dimension, winningStrategies);
+        Game game = Game.getBuilder()
+                .setDimension(dimension)
+                .setPlayers(players)
+                .setWinningStrategies(winningStrategies)
+                .build();
+
         return game;
     }
 
